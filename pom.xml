@@ -13,7 +13,7 @@
 
     <groupId>it.gov.pagopa</groupId>
     <artifactId>iuvgenerator</artifactId>
-    <version>0.1.0</version>
+    <version>0.0.1</version>
     <name>pagoPA IUV Generator</name>
     <description>A service that permits to generate unique IUV codes for each creditor institution.</description>
 
