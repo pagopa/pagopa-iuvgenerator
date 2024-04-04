@@ -45,7 +45,7 @@ public class ResponseValidator {
                     sb.append(error.getPropertyPath()).append(" ").append(error.getMessage()).append(". ");
                 }
                 var msg = StringUtils.chop(sb.toString());
-                throw new AppException(AppErrorCodeMessageEnum.GENERIC_ERROR, msg);
+                throw new AppException(AppErrorCodeMessageEnum.VALIDATION_ERROR, msg);
             }
         }
     }

@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 public class IUVGenerationRequest {
 
     @NotNull
-    @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "..", example = "3")
+    @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "The value of the AUX digit related to the IUV.", example = "3")
     private Integer auxDigit;
 
     @NotNull
-    @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "..", example = "48")
+    @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "The value of the segregation related to the IUV.", example = "48")
     private Integer segregationCode;
 }

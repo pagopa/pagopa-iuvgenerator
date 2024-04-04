@@ -43,7 +43,7 @@ public class GenerationService {
 
         if (!found) {
             log.error(String.format("Impossible to generate a valid unique IUV in [%d] retries for organization [%s].", retries, organizationFiscalCode));
-            throw new AppException(AppErrorCodeMessageEnum.GENERIC_ERROR);
+            throw new AppException(AppErrorCodeMessageEnum.GENERATION_MAX_RETRIES_REACHED, retries, organizationFiscalCode);
         }
 
         return IUVGenerationResponse.builder()

@@ -11,9 +11,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import it.gov.pagopa.iuvgenerator.controller.model.generator.IUVGenerationRequest;
 import it.gov.pagopa.iuvgenerator.controller.model.generator.IUVGenerationResponse;
 import it.gov.pagopa.iuvgenerator.service.GenerationService;
+import it.gov.pagopa.iuvgenerator.util.openapi.OpenAPITableMetadata;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,13 +30,14 @@ public class GenerationController {
 
     private final GenerationService generationService;
 
-    @Operation(summary = "... without aux-digit", security = {@SecurityRequirement(name = "ApiKey")}, tags = {"Generation"})
+    @Operation(summary = "Generate new IUV for organization", description = "Generate a new unique IUV code without aux-digit at the start.", security = {@SecurityRequirement(name = "ApiKey")}, tags = {"Generation"})
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Created.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = IUVGenerationRequest.class))),
     })
     @PostMapping("/organizations/{organization-fiscal-code}/iuv")
-    public IUVGenerationResponse generateIUV(@Parameter(description = "...", example = "77777777777") @PathVariable("organization-fiscal-code") String organizationFiscalCode,
-                                             @Valid @RequestBody IUVGenerationRequest request) {
-        return generationService.generateIUV(organizationFiscalCode, request);
+    @OpenAPITableMetadata(external = false, authentication = OpenAPITableMetadata.APISecurityMode.APIKEY, idempotency = false, readWriteIntense = OpenAPITableMetadata.ReadWrite.BOTH)
+    public ResponseEntity<IUVGenerationResponse> generateIUV(@Parameter(description = "The fiscal code of the creditor institution", example = "77777777777") @PathVariable("organization-fiscal-code") String organizationFiscalCode,
+                                                             @Valid @RequestBody IUVGenerationRequest request) {
+        return ResponseEntity.status(201).body(generationService.generateIUV(organizationFiscalCode, request));
     }
 }

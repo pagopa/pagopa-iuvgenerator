@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class IUVGenerationResponse {
 
     @NotNull
-    @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "..", example = "584756566583")
+    @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "The unique IUV generated from computation for the creditor institution.", example = "584756566583")
     private String iuv;
 }
