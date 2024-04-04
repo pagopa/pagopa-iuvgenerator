@@ -1,0 +1,9 @@
+{
+  "environment": [
+    {
+      "env": "local",
+      "host": "http://localhost:59371",
+      "basePath": "organizations"
+    }
+  ]
+}

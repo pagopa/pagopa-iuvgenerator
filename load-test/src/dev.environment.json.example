@@ -1,0 +1,9 @@
+{
+  "environment": [
+    {
+      "env": "dev",
+      "host": "<dev.url>",
+      "basePath": "<dev.basepath>"
+    }
+  ]
+}

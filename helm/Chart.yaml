@@ -1,10 +1,10 @@
 apiVersion: v2
-name: pagopa-afm-calculator
-description: Microservice that handles calculation for pagoPA Advanced Fees Management
+name: pagopa-iuvgenerator
+description: Microservice that permits to generate unique IUV codes for each creditor institution.
 type: application
 version: 0.0.0
 appVersion: 0.0.0
 dependencies:
   - name: microservice-chart
-    version: 2.8.0
+    version: 3.0.0
     repository: "https://pagopa.github.io/aks-microservice-chart-blueprint"

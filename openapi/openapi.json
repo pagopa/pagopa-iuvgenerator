@@ -1,1 +1,121 @@
-{}
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "description" : "null\n\n**STANDARD ERRORS:**\nNAME | CODE | DESCRIPTION\n- | - | -\n**IUVG-1000** | *GENERIC_ERROR* | Error while generating IUV.  *...error description...*\n",
+    "title" : "OpenAPI definition",
+    "version" : "v0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost",
+    "description" : "Generated server url"
+  } ],
+  "tags" : [ {
+    "description" : "Application info APIs",
+    "name" : "Home"
+  }, {
+    "description" : "IUV Generation APIs",
+    "name" : "Generation"
+  } ],
+  "paths" : {
+    "/info" : {
+      "get" : {
+        "operationId" : "healthCheck",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AppInfoResponse"
+                }
+              }
+            },
+            "description" : "OK."
+          }
+        },
+        "security" : [ {
+          "ApiKey" : [ ]
+        } ],
+        "summary" : "Return OK if application is started",
+        "tags" : [ "Home" ]
+      }
+    },
+    "/organizations/{organization-fiscal-code}/iuv" : {
+      "post" : {
+        "operationId" : "generateIUV",
+        "parameters" : [ {
+          "description" : "...",
+          "example" : 77777777777,
+          "in" : "path",
+          "name" : "organization-fiscal-code",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/IUVGenerationRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/IUVGenerationRequest"
+                }
+              }
+            },
+            "description" : "Created."
+          }
+        },
+        "security" : [ {
+          "ApiKey" : [ ]
+        } ],
+        "summary" : "... without aux-digit",
+        "tags" : [ "Generation" ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "AppInfoResponse" : {
+        "type" : "object",
+        "properties" : {
+          "environment" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "string"
+          }
+        }
+      },
+      "IUVGenerationRequest" : {
+        "type" : "object",
+        "properties" : {
+          "auxDigit" : {
+            "type" : "integer",
+            "description" : "..",
+            "format" : "int32",
+            "example" : 3
+          },
+          "segregationCode" : {
+            "type" : "integer",
+            "description" : "..",
+            "format" : "int32",
+            "example" : 48
+          }
+        },
+        "required" : [ "auxDigit", "segregationCode" ]
+      }
+    }
+  }
+}
