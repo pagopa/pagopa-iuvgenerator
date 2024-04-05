@@ -34,9 +34,9 @@ microservice-chart:
     servicePort: 8080
   serviceAccount:
     create: false
-    annotations: {}
+    annotations: { }
     name: ""
-  podAnnotations: {}
+  podAnnotations: { }
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -70,25 +70,25 @@ microservice-chart:
     OTEL_SERVICE_NAME: "pagopa-iuvgenerator"
     OTEL_RESOURCE_ATTRIBUTES: "service.environment=uat"
     OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector.elastic-system.svc:4317"
-    OTEL_TRACES_EXPORTER: otlp
-    OTEL_METRICS_EXPORTER: otlp
-    OTEL_LOGS_EXPORTER: none
+    OTEL_TRACES_EXPORTER: 'otlp'
+    OTEL_METRICS_EXPORTER: 'otlp'
+    OTEL_LOGS_EXPORTER: 'none'
     OTEL_TRACES_SAMPLER: "always_on"
-    GENERATION_MAXRETRIES: 5
+    GENERATION_MAXRETRIES: '5'
   secretProvider:
     create: true
     envSecrets:
       # required
       APPLICATIONINSIGHTS_CONNECTION_STRING: 'ai-u-connection-string'
-      OTEL_EXPORTER_OTLP_HEADERS: elastic-apm-secret-token
+      OTEL_EXPORTER_OTLP_HEADERS: 'elastic-apm-secret-token'
       TABLE_CONNECTION_STRING: 'iuv-generator-cosmos-primary-connection-string'
     keyvault:
       name: "pagopa-u-shared-kv"
       tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
   tmpVolumeMount:
     create: true
-  nodeSelector: {}
-  tolerations: []
+  nodeSelector: { }
+  tolerations: [ ]
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
