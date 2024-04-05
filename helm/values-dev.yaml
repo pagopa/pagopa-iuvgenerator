@@ -4,7 +4,7 @@ microservice-chart:
   fullnameOverride: ""
   image:
     repository: ghcr.io/pagopa/pagopa-iuvgenerator
-    tag: "0.2.0"
+    tag: "0.0.1"
     pullPolicy: Always
   livenessProbe:
     httpGet:
@@ -99,21 +99,7 @@ microservice-chart:
                 values:
                   - user
   canaryDelivery:
-    create: false
-    ingress:
-      create: true
-      canary:
-        type: header
-        headerName: X-Canary
-        headerValue: canary
-        weightPercent: 0
-    service:
-      create: true
     deployment:
-      create: true
       image:
-        repository: ghcr.io/pagopa/pagopa-iuvgenerator
-        tag: "0.0.0"
-        pullPolicy: Always
-      envConfig: {}
-      envSecret: {}
+        tag: "0.0.1"
+    create: false
