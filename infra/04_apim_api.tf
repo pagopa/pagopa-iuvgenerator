@@ -1,12 +1,12 @@
 locals {
-  repo_name = "TODO" # TODO add the name of the repository
+  repo_name = "pagopa-iuvgenerator"
 
-  display_name = "TODO" # TODO
-  description  = "TODO" # TODO
-  path  = "TODO" # TODO add your base path
+  display_name = "IUV Generator pagoPA - API"
+  description  = "API to support IUV generator service"
+  path         = "shared/pagopa-iuvgenerator"
 
-  host         = "api.${var.apim_dns_zone_prefix}.${var.external_domain}"
-  hostname     = var.hostname
+  host     = "api.${var.apim_dns_zone_prefix}.${var.external_domain}"
+  hostname = var.hostname
 }
 
 resource "azurerm_api_management_group" "api_group" {
