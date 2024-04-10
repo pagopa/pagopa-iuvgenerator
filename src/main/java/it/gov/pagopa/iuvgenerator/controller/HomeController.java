@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import it.gov.pagopa.iuvgenerator.controller.model.AppInfoResponse;
+import it.gov.pagopa.iuvgenerator.service.HealthService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -19,19 +21,13 @@ import org.springframework.web.servlet.view.RedirectView;
 @RestController
 @Validated
 @Tag(name = "Home", description = "Application info APIs")
+@RequiredArgsConstructor
 public class HomeController {
+
+    private final HealthService healthService;
 
     @Value("${server.servlet.context-path}")
     String basePath;
-
-    @Value("${info.application.name}")
-    private String name;
-
-    @Value("${info.application.version}")
-    private String version;
-
-    @Value("${info.properties.environment}")
-    private String environment;
 
 
     /**
@@ -57,11 +53,7 @@ public class HomeController {
     })
     @GetMapping("/info")
     public AppInfoResponse healthCheck() {
-        return AppInfoResponse.builder()
-                .name(name)
-                .version(version)
-                .environment(environment)
-                .build();
+        return this.healthService.healthCheck();
     }
 
 }

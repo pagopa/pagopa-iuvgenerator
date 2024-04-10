@@ -32,7 +32,7 @@ public class GenerationController {
 
     @Operation(summary = "Generate new IUV for organization", description = "Generate a new unique IUV code without aux-digit at the start.", security = {@SecurityRequirement(name = "ApiKey")}, tags = {"Generation"})
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Created.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = IUVGenerationRequest.class))),
+            @ApiResponse(responseCode = "201", description = "Created.", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = IUVGenerationResponse.class))),
     })
     @PostMapping("/organizations/{organization-fiscal-code}/iuv")
     @OpenAPITableMetadata(external = false, authentication = OpenAPITableMetadata.APISecurityMode.APIKEY, idempotency = false, readWriteIntense = OpenAPITableMetadata.ReadWrite.BOTH)
