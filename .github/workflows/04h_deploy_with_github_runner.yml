@@ -7,11 +7,10 @@ on:
         required: true
         description: The name of the environment where to deploy
         type: string
-
-    target:
-      required: true
-      description: The environment target of the job
-      type: string
+      target:
+        required: true
+        description: The environment target of the job
+        type: string
 
 env:
   NAMESPACE: shared
