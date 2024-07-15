@@ -9,6 +9,24 @@ locals {
   hostname = var.hostname
 }
 
+module "apim_iuvgenerator_product" {
+  source = "git::https://github.com/pagopa/terraform-azurerm-v3.git//api_management_product?ref=v6.6.0"
+
+  product_id   = local.apim.product_id
+  display_name = "IUV Generator pagoPA"
+  description  = "Prodotto Generatore IUV"
+
+  api_management_name = local.apim.name
+  resource_group_name = local.apim.rg
+
+  published             = true
+  subscription_required = true
+  approval_required     = false
+  subscriptions_limit   = 1000
+
+  policy_xml = file("./policy/api_product/_base_policy.xml")
+}
+
 resource "azurerm_api_management_group" "api_group" {
   name                = local.apim.product_id
   resource_group_name = local.apim.rg
