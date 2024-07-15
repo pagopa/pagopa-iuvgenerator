@@ -125,4 +125,5 @@ jobs:
     uses: ./.github/workflows/04h_deploy_with_github_runner.yml
     with:
       environment: ${{ needs.setup.outputs.environment }}
+      target: ${{ needs.setup.outputs.environment }}
     secrets: inherit
