@@ -63,7 +63,7 @@ microservice-chart:
           value: "75"
   envConfig:
     WEBSITE_SITE_NAME: 'pagopaiuvgenerator' # required to show cloud role name in application insights
-    ENV: 'aks-dev'
+    ENV: 'dev'
     APP_LOGGING_LEVEL: 'DEBUG'
     DEFAULT_LOGGING_LEVEL: 'INFO'
     CORS_CONFIGURATION: '{"origins": ["*"], "methods": ["*"]}'
