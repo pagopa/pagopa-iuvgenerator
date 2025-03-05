@@ -63,12 +63,12 @@ microservice-chart:
           value: "75"
   envConfig:
     WEBSITE_SITE_NAME: 'pagopaiuvgenerator' # required to show cloud role name in application insights
-    ENV: 'aks-prod'
+    ENV: 'prod'
     APP_LOGGING_LEVEL: 'INFO'
     DEFAULT_LOGGING_LEVEL: 'INFO'
     CORS_CONFIGURATION: '{"origins": ["*"], "methods": ["*"]}'
     OTEL_SERVICE_NAME: "pagopa-iuvgenerator"
-    OTEL_RESOURCE_ATTRIBUTES: "service.environment=prod"
+    OTEL_RESOURCE_ATTRIBUTES: "deployment.environment=prod"
     OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector.elastic-system.svc:4317"
     OTEL_TRACES_EXPORTER: 'otlp'
     OTEL_METRICS_EXPORTER: 'otlp'
