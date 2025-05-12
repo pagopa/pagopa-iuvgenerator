@@ -4,7 +4,7 @@ microservice-chart:
   fullnameOverride: ""
   image:
     repository: ghcr.io/pagopa/pagopa-iuvgenerator
-    tag: "0.2.14-2-PIDM-484-update-helm-chart"
+    tag: "0.2.14-3-PIDM-484-update-helm-chart"
     pullPolicy: Always
   livenessProbe:
     httpGet:
@@ -101,3 +101,5 @@ microservice-chart:
                   - user
   azure:
     workloadIdentityClientId: <workload-identity-client-id-set-automatically-by-gha>
+  canaryDelivery:
+    create: false
