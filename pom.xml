@@ -13,7 +13,7 @@
 
     <groupId>it.gov.pagopa</groupId>
     <artifactId>iuvgenerator</artifactId>
-    <version>0.2.14-3-PIDM-484-update-helm-chart</version>
+    <version>0.2.14-4-PIDM-484-update-helm-chart</version>
     <name>pagoPA IUV Generator</name>
     <description>A service that permits to generate unique IUV codes for each creditor institution.</description>
 
