@@ -1,5 +1,5 @@
 apiVersion: v2
-name: pagopa-iuvgenerator
+name: pagopa-iuvgenerator-service
 description: Microservice that permits to generate unique IUV codes for each creditor institution.
 type: application
 version: 0.22.0
