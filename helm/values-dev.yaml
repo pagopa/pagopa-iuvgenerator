@@ -31,7 +31,7 @@ microservice-chart:
   ingress:
     create: true
     host: "weudev.shared.internal.dev.platform.pagopa.it"
-    path: /pagopa-iuvgenerator(/|$)(.*)
+    path: /pagopa-iuvgenerator-service/(.*)
     servicePort: 8080
   serviceAccount:
     create: false
