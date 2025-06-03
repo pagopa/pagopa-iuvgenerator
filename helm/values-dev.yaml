@@ -1,7 +1,7 @@
 microservice-chart:
   namespace: "shared"
   nameOverride: ""
-  fullnameOverride: "pagopa-iuvgenerator-service"
+  fullnameOverride: "pagopa-iuv-generator"
   image:
     repository: ghcr.io/pagopa/pagopa-iuvgenerator
     tag: "0.2.14-1-PIDM-484-update-helm-chart"
@@ -31,7 +31,7 @@ microservice-chart:
   ingress:
     create: true
     host: "weudev.shared.internal.dev.platform.pagopa.it"
-    path: /pagopa-iuvgenerator-service/(.*)
+    path: /pagopa-iuv-generator/(.*)
     servicePort: 8080
   serviceAccount:
     create: false

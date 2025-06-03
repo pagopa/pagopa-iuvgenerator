@@ -14,7 +14,7 @@ on:
 
 env:
   NAMESPACE: shared
-  APP_NAME: pagopaiuvgenerator
+  APP_NAME: pagopa-iuv-generator
 
 
 permissions:
