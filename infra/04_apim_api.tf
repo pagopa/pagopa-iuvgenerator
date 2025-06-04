@@ -3,7 +3,7 @@ locals {
 
   display_name = "IUV Generator for pagoPA - API"
   description  = "API for IUV generator service"
-  path         = "shared/pagopa-iuvgenerator"
+  path         = "shared/pagopa-iuv-generator"
 
   host     = "api.${var.apim_dns_zone_prefix}.${var.external_domain}"
   hostname = var.hostname
