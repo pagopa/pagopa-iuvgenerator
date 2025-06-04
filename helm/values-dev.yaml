@@ -1,10 +1,10 @@
 microservice-chart:
   namespace: "shared"
   nameOverride: ""
-  fullnameOverride: ""
+  fullnameOverride: "pagopa-iuv-generator"
   image:
     repository: ghcr.io/pagopa/pagopa-iuvgenerator
-    tag: "0.2.15"
+    tag: "0.2.14-3-PIDM-484-update-helm-chart"
     pullPolicy: Always
   livenessProbe:
     httpGet:
@@ -22,6 +22,7 @@ microservice-chart:
     periodSeconds: 10
   deployment:
     create: true
+    replicas: 1
   service:
     create: true
     type: ClusterIP
@@ -30,12 +31,12 @@ microservice-chart:
   ingress:
     create: true
     host: "weudev.shared.internal.dev.platform.pagopa.it"
-    path: /pagopa-iuvgenerator(/|$)(.*)
+    path: /pagopa-iuv-generator/(.*)
     servicePort: 8080
   serviceAccount:
     create: false
     annotations: {}
-    name: ""
+    name: "shared-workload-identity"
   podAnnotations: {}
   podSecurityContext:
     seccompProfile:
@@ -75,16 +76,13 @@ microservice-chart:
     OTEL_LOGS_EXPORTER: 'none'
     OTEL_TRACES_SAMPLER: "always_on"
     GENERATION_MAXRETRIES: '5'
-  secretProvider:
-    create: true
-    envSecrets:
-      # required
-      APPLICATIONINSIGHTS_CONNECTION_STRING: 'ai-d-connection-string'
-      OTEL_EXPORTER_OTLP_HEADERS: 'elastic-apm-secret-token'
-      TABLE_CONNECTION_STRING: 'iuv-generator-cosmos-primary-connection-string'
-    keyvault:
-      name: "pagopa-d-shared-kv"
-      tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
+  envSecret:
+    APPLICATIONINSIGHTS_CONNECTION_STRING: 'ai-d-connection-string'
+    OTEL_EXPORTER_OTLP_HEADERS: 'elastic-apm-secret-token'
+    TABLE_CONNECTION_STRING: 'iuv-generator-cosmos-primary-connection-string'
+  keyvault:
+    name: "pagopa-d-shared-kv"
+    tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
   tmpVolumeMount:
     create: true
   nodeSelector: {}
@@ -98,8 +96,7 @@ microservice-chart:
                 operator: In
                 values:
                   - user
+  azure:
+    workloadIdentityClientId: <workload-identity-client-id-set-automatically-by-gha>
   canaryDelivery:
-    deployment:
-      image:
-        tag: "0.0.1"
     create: false
