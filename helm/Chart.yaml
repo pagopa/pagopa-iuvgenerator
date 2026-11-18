@@ -2,8 +2,8 @@ apiVersion: v2
 name: pagopa-iuvgenerator
 description: Microservice that permits to generate unique IUV codes for each creditor institution.
 type: application
-version: 0.27.0
-appVersion: 0.3.3-1-PIDM-2620
+version: 0.28.0
+appVersion: 0.3.3-2-PIDM-2620
 dependencies:
   - name: microservice-chart
     version: 7.5.0
